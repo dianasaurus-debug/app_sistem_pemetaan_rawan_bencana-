@@ -30,7 +30,7 @@ class _PetaRawanLongsorState extends State<PetaRawanLongsor> {
           onMapCreated: _onMapCreated,
           initialCameraPosition: CameraPosition(
             target: _center,
-            zoom: 11.0,
+            zoom: 18.0,
           ),
         ),
       );

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:ewarn_app/locations.dart' as locations;
+import 'package:location/location.dart';
 
 
 class PetaRiwayatLongsor extends StatefulWidget {
@@ -8,13 +10,32 @@ class PetaRiwayatLongsor extends StatefulWidget {
 }
 
 class _PetaRiwayatLongsorState extends State<PetaRiwayatLongsor> {
-  late GoogleMapController mapController;
+  final Map<String, Marker> _markers = {};
+  final LatLng _center = const LatLng(-7.317463, 111.761466);
+  LatLng _lastMapPosition = const LatLng(-7.317463, 111.761466);
 
-  final LatLng _center = const LatLng(-6.873512, 111.964173);
-
-  void _onMapCreated(GoogleMapController controller) {
-    mapController = controller;
+  Future<void> _onMapCreated(GoogleMapController controller) async {
+    final googleOffices = await locations.getGoogleOffices();
+    setState(() {
+      _markers.clear();
+      for (final riwayat_bencana in googleOffices.riwayat_bencana) {
+        final marker = Marker(
+          markerId: MarkerId(riwayat_bencana.id.toString()),
+          position: LatLng(riwayat_bencana.latitude, riwayat_bencana.longitude),
+          infoWindow: InfoWindow(
+            title: riwayat_bencana.desa,
+            snippet: riwayat_bencana.tahun,
+          ),
+        );
+        _markers[riwayat_bencana.desa] = marker;
+      }
+    });
   }
+  void _onCameraMove(CameraPosition position) {
+    _lastMapPosition = position.target;
+  }
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -30,8 +51,10 @@ class _PetaRiwayatLongsorState extends State<PetaRiwayatLongsor> {
         onMapCreated: _onMapCreated,
         initialCameraPosition: CameraPosition(
           target: _center,
-          zoom: 11.0,
+          zoom: 10.0,
         ),
+        onCameraMove: _onCameraMove,
+        markers: _markers.values.toSet(),
       ),
     );
   }

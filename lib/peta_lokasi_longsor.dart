@@ -14,16 +14,16 @@ class _PetaLokasiLongsorState extends State<PetaLokasiLongsor> {
     final googleOffices = await locations.getGoogleOffices();
     setState(() {
       _markers.clear();
-      for (final office in googleOffices.offices) {
+      for (final riwayat_bencana in googleOffices.riwayat_bencana) {
         final marker = Marker(
-          markerId: MarkerId(office.name),
-          position: LatLng(office.lat, office.lng),
+          markerId: MarkerId(riwayat_bencana.id.toString()),
+          position: LatLng(riwayat_bencana.latitude, riwayat_bencana.longitude),
           infoWindow: InfoWindow(
-            title: office.name,
-            snippet: office.address,
+            title: riwayat_bencana.desa,
+            snippet: riwayat_bencana.tahun,
           ),
         );
-        _markers[office.name] = marker;
+        _markers[riwayat_bencana.desa] = marker;
       }
     });
   }
@@ -42,7 +42,7 @@ class _PetaLokasiLongsorState extends State<PetaLokasiLongsor> {
       body: GoogleMap(
         onMapCreated: _onMapCreated,
         initialCameraPosition: CameraPosition(
-          target: const LatLng(0, 0),
+          target: const LatLng(-7.317463, 111.761466),
           zoom: 2,
         ),
         markers: _markers.values.toSet(),

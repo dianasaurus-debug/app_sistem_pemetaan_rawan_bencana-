@@ -6,70 +6,43 @@ part of 'locations.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-LatLng _$LatLngFromJson(Map<String, dynamic> json) {
-  return LatLng(
-    lat: (json['lat'] as num).toDouble(),
-    lng: (json['lng'] as num).toDouble(),
+RiwayatBencana _$RiwayatBencanaFromJson(Map<String, dynamic> json) {
+  return RiwayatBencana(
+    desa: json['desa'] as String,
+    id: (json['id'] as num).toInt(),
+    kecamatan: json['kecamatan'] as String,
+    latitude: double.parse(json['latitude']),
+    longitude: double.parse(json['longitude']),
+    kerusakan: json['kerusakan'] as String,
+    kerugian: json['kerugian'] as String,
+    status_perbaikan: json['status_perbaikan'] as String,
+    bulan: json['bulan'] as String,
+    tahun: (json['tahun']).toString(),
   );
 }
 
-Map<String, dynamic> _$LatLngToJson(LatLng instance) => <String, dynamic>{
-      'lat': instance.lat,
-      'lng': instance.lng,
-    };
-
-Region _$RegionFromJson(Map<String, dynamic> json) {
-  return Region(
-    coords: LatLng.fromJson(json['coords'] as Map<String, dynamic>),
-    id: json['id'] as String,
-    name: json['name'] as String,
-    zoom: (json['zoom'] as num).toDouble(),
-  );
-}
-
-Map<String, dynamic> _$RegionToJson(Region instance) => <String, dynamic>{
-      'coords': instance.coords,
+Map<String, dynamic> _$RiwayatBencanaToJson(RiwayatBencana instance) =>
+    <String, dynamic>{
+      'desa': instance.desa,
       'id': instance.id,
-      'name': instance.name,
-      'zoom': instance.zoom,
-    };
-
-Office _$OfficeFromJson(Map<String, dynamic> json) {
-  return Office(
-    address: json['address'] as String,
-    id: json['id'] as String,
-    image: json['image'] as String,
-    lat: (json['lat'] as num).toDouble(),
-    lng: (json['lng'] as num).toDouble(),
-    name: json['name'] as String,
-    phone: json['phone'] as String,
-    region: json['region'] as String,
-  );
-}
-
-Map<String, dynamic> _$OfficeToJson(Office instance) => <String, dynamic>{
-      'address': instance.address,
-      'id': instance.id,
-      'image': instance.image,
-      'lat': instance.lat,
-      'lng': instance.lng,
-      'name': instance.name,
-      'phone': instance.phone,
-      'region': instance.region,
+      'kecamatan': instance.kecamatan,
+      'latitude': instance.latitude,
+      'longitude': instance.longitude,
+      'kerusakan': instance.kerusakan,
+      'kerugian': instance.kerugian,
+      'status_perbaikan': instance.status_perbaikan,
+      'bulan': instance.bulan,
+      'tahun': instance.tahun,
     };
 
 Locations _$LocationsFromJson(Map<String, dynamic> json) {
   return Locations(
-    offices: (json['offices'] as List<dynamic>)
-        .map((e) => Office.fromJson(e as Map<String, dynamic>))
-        .toList(),
-    regions: (json['regions'] as List<dynamic>)
-        .map((e) => Region.fromJson(e as Map<String, dynamic>))
+    riwayat_bencana: (json['riwayat_bencana'] as List<dynamic>)
+        .map((e) => RiwayatBencana.fromJson(e as Map<String, dynamic>))
         .toList(),
   );
 }
 
 Map<String, dynamic> _$LocationsToJson(Locations instance) => <String, dynamic>{
-      'offices': instance.offices,
-      'regions': instance.regions,
+     'riwayat_bencana': instance.riwayat_bencana,
     };

@@ -6,80 +6,53 @@ import 'package:json_annotation/json_annotation.dart';
 part 'locations.g.dart';
 
 @JsonSerializable()
-class LatLng {
-  LatLng({
-    required this.lat,
-    required this.lng,
-  });
-
-  factory LatLng.fromJson(Map<String, dynamic> json) => _$LatLngFromJson(json);
-  Map<String, dynamic> toJson() => _$LatLngToJson(this);
-
-  final double lat;
-  final double lng;
-}
-
-@JsonSerializable()
-class Region {
-  Region({
-    required this.coords,
+class RiwayatBencana {
+  RiwayatBencana({
+    required this.desa,
     required this.id,
-    required this.name,
-    required this.zoom,
+    required this.kecamatan,
+    required this.latitude,
+    required this.longitude,
+    required this.kerusakan,
+    required this.kerugian,
+    required this.status_perbaikan,
+    required this.bulan,
+    required this.tahun,
+
+
   });
 
-  factory Region.fromJson(Map<String, dynamic> json) => _$RegionFromJson(json);
-  Map<String, dynamic> toJson() => _$RegionToJson(this);
+  factory RiwayatBencana.fromJson(Map<String, dynamic> json) => _$RiwayatBencanaFromJson(json);
+  Map<String, dynamic> toJson() => _$RiwayatBencanaToJson(this);
 
-  final LatLng coords;
-  final String id;
-  final String name;
-  final double zoom;
-}
-
-@JsonSerializable()
-class Office {
-  Office({
-    required this.address,
-    required this.id,
-    required this.image,
-    required this.lat,
-    required this.lng,
-    required this.name,
-    required this.phone,
-    required this.region,
-  });
-
-  factory Office.fromJson(Map<String, dynamic> json) => _$OfficeFromJson(json);
-  Map<String, dynamic> toJson() => _$OfficeToJson(this);
-
-  final String address;
-  final String id;
-  final String image;
-  final double lat;
-  final double lng;
-  final String name;
-  final String phone;
-  final String region;
+  final String desa;
+  final int id;
+  final String kecamatan;
+  final double latitude;
+  final double longitude;
+  final String kerusakan;
+  final String kerugian;
+  final String status_perbaikan;
+  final String bulan;
+  final String tahun;
 }
 
 @JsonSerializable()
 class Locations {
   Locations({
-    required this.offices,
-    required this.regions,
+    required this.riwayat_bencana,
   });
 
   factory Locations.fromJson(Map<String, dynamic> json) =>
       _$LocationsFromJson(json);
   Map<String, dynamic> toJson() => _$LocationsToJson(this);
 
-  final List<Office> offices;
-  final List<Region> regions;
+  final List<RiwayatBencana> riwayat_bencana;
+
 }
 
 Future<Locations> getGoogleOffices() async {
-  const googleLocationsURL = 'https://about.google/static/data/locations.json';
+  const googleLocationsURL = 'http://192.168.43.204:8000/api/riwayat-bencana/longsor';
 
   // Retrieve the locations of Google offices
   final response = await http.get(Uri.parse(googleLocationsURL));
