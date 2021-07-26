@@ -4,18 +4,17 @@ import 'package:ewarn_app/locations.dart' as locations;
 import 'package:location/location.dart';
 
 
-class PetaRiwayatLongsor extends StatefulWidget {
+class PetaRiwayatBanjir extends StatefulWidget {
   @override
-  _PetaRiwayatLongsorState createState() => _PetaRiwayatLongsorState();
+  _PetaRiwayatBanjirState createState() => _PetaRiwayatBanjirState();
 }
 
-class _PetaRiwayatLongsorState extends State<PetaRiwayatLongsor> {
+class _PetaRiwayatBanjirState extends State<PetaRiwayatBanjir> {
   final Map<String, Marker> _markers = {};
   final LatLng _center = const LatLng(-7.317463, 111.761466);
   LatLng _lastMapPosition = const LatLng(-7.317463, 111.761466);
-
   Future<void> _onMapCreated(GoogleMapController controller) async {
-    final googleOffices = await locations.getGoogleOffices();
+    final googleOffices = await locations.getGoogleOffices('banjir');
     setState(() {
       _markers.clear();
       for (final riwayat_bencana in googleOffices.riwayat_bencana) {
@@ -31,6 +30,31 @@ class _PetaRiwayatLongsorState extends State<PetaRiwayatLongsor> {
       }
     });
   }
+  Location location = new Location();
+  late bool _serviceEnabled;
+  late PermissionStatus _permissionGranted;
+  _locateMe() async {
+    _serviceEnabled = await location.serviceEnabled();
+    if (!_serviceEnabled) {
+      _serviceEnabled = await location.requestService();
+      if (!_serviceEnabled) {
+        return;
+      }
+    }
+    _permissionGranted = await location.hasPermission();
+    if (_permissionGranted == PermissionStatus.denied) {
+      _permissionGranted = await location.requestPermission();
+      if (_permissionGranted != PermissionStatus.granted) {
+        return;
+      }
+    }
+
+  }
+  @override
+  initState() {
+    super.initState();
+    _locateMe();
+  }
   void _onCameraMove(CameraPosition position) {
     _lastMapPosition = position.target;
   }
@@ -42,10 +66,10 @@ class _PetaRiwayatLongsorState extends State<PetaRiwayatLongsor> {
     return  Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text('Peta Riwayat Longsor',
+        title: Text('Peta Riwayat Banjir',
             textAlign: TextAlign.center,
             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20, color: Colors.white, fontFamily: 'Open Sans')),
-        backgroundColor: Color(0xfff8c291),
+        backgroundColor: Color(0xffeaB543),
       ),
       body: GoogleMap(
         onMapCreated: _onMapCreated,

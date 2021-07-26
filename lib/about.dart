@@ -12,7 +12,7 @@ class About extends StatelessWidget {
           title: Text('Tentang Aplikasi',
               textAlign: TextAlign.center,
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20, color: Colors.white, fontFamily: 'Open Sans')),
-          backgroundColor: Color(0xfff8c291),
+          backgroundColor: Color(0xffeaB543),
         ),
         body:
         ListView(

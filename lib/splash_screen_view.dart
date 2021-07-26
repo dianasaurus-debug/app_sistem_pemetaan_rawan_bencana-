@@ -1,10 +1,11 @@
 import 'dart:async';
 import 'dart:ui';
 
-import 'package:ewarn_app/sop_view.dart';
+import 'package:ewarn_app/index.dart';
+import 'package:ewarn_app/longsor/sop_view.dart';
 import 'package:flutter/material.dart';
-import 'package:ewarn_app/home_view.dart';
-import 'package:ewarn_app/sop_view.dart';
+import 'package:ewarn_app/longsor/home_view.dart';
+import 'package:ewarn_app/longsor/sop_view.dart';
 
 class SplashScreenPage extends StatefulWidget{
   @override
@@ -22,7 +23,7 @@ class _SplashScreenPageState extends State<SplashScreenPage> {
     return Timer(duration, (){
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(builder: (_){
-          return HomePage();
+          return IndexPage();
         })
       );
     });
@@ -30,7 +31,7 @@ class _SplashScreenPageState extends State<SplashScreenPage> {
   @override
   Widget build(BuildContext context){
     return Scaffold(
-      backgroundColor: Color(0xfff8c291),
+      backgroundColor: Color(0xffeaB543),
       body: Center(
         child:
           Padding(

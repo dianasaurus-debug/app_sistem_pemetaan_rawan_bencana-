@@ -3,59 +3,53 @@ import 'dart:io';
 import 'package:http/http.dart' as http;
 import 'package:json_annotation/json_annotation.dart';
 
-part 'locations.g.dart';
+part 'lokasi_bencana.g.dart';
 
 @JsonSerializable()
-class RiwayatBencana {
-  RiwayatBencana({
+class BencanaBaru {
+  BencanaBaru({
     required this.desa,
     required this.id,
     required this.kecamatan,
     required this.latitude,
     required this.longitude,
-    required this.kerusakan,
-    required this.kerugian,
-    required this.status_perbaikan,
-    required this.bulan,
-    required this.tahun,
-
+    required this.tanggal,
+    required this.foto_bencana,
   });
 
-  factory RiwayatBencana.fromJson(Map<String, dynamic> json) => _$RiwayatBencanaFromJson(json);
-  Map<String, dynamic> toJson() => _$RiwayatBencanaToJson(this);
+  factory BencanaBaru.fromJson(Map<String, dynamic> json) => _$BencanaBaruFromJson(json);
+  Map<String, dynamic> toJson() => _$BencanaBaruToJson(this);
 
   final String desa;
   final int id;
   final String kecamatan;
   final double latitude;
   final double longitude;
-  final String kerusakan;
-  final String kerugian;
-  final String status_perbaikan;
-  final String bulan;
-  final String tahun;
+  final String tanggal;
+  final String foto_bencana;
 }
 
 @JsonSerializable()
 class Locations {
   Locations({
-    required this.riwayat_bencana,
+    required this.bencana_baru,
   });
 
   factory Locations.fromJson(Map<String, dynamic> json) =>
       _$LocationsFromJson(json);
   Map<String, dynamic> toJson() => _$LocationsToJson(this);
 
-  final List<RiwayatBencana> riwayat_bencana;
+  final List<BencanaBaru> bencana_baru;
 
 }
 
 Future<Locations> getGoogleOffices(jenisbencana) async {
-  const googleLocationsURL = 'http://192.168.43.204:8000/api/riwayat-bencana/';
+  const googleLocationsURL = 'http://192.168.43.204:8000/api/bencana-baru/';
 
   // Retrieve the locations of Google offices
   final response = await http.get(Uri.parse(googleLocationsURL+jenisbencana));
   if (response.statusCode == 200) {
+    print(json.encode(response.body));
     return Locations.fromJson(json.decode(response.body));
   } else {
     throw HttpException(

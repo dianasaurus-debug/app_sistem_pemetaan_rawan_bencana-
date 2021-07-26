@@ -1,17 +1,18 @@
 import 'package:ewarn_app/about.dart';
-import 'package:ewarn_app/peta_lokasi_longsor.dart';
-import 'package:ewarn_app/peta_rawan_longsor.dart';
-import 'package:ewarn_app/peta_riwayat_longsor.dart';
+import 'package:ewarn_app/kekeringan/peta_lokasi_kekeringan.dart';
+import 'package:ewarn_app/kekeringan/peta_rawan_kekeringan.dart';
+import 'package:ewarn_app/kekeringan/peta_riwayat_kekeringan.dart';
 
-import 'package:ewarn_app/sop_view.dart';
+import 'package:ewarn_app/kekeringan/sop_view.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-class HomePage extends StatelessWidget {
+import 'package:ewarn_app/navigate_url.dart';
+class HomePageKekeringan extends StatelessWidget {
   Widget build(BuildContext context){
     return Scaffold(
       body:
         ListView(
-          padding: EdgeInsets.only(top: 80),
+            padding: EdgeInsets.only(top: 20),
           children: [
         Container(
         color: Colors.white,
@@ -21,35 +22,62 @@ class HomePage extends StatelessWidget {
           children: [
             Stack(
               children: <Widget>[
-                Container(
-                  margin: const EdgeInsets.only(top: 60),
-                  alignment: Alignment.center,
+                Card(
+                  margin: EdgeInsets.fromLTRB(15, 10, 15, 0),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.only(
+                      topRight: Radius.circular(20),
+                      topLeft: Radius.circular(20),
+                      bottomRight: Radius.circular(20),
+                      bottomLeft: Radius.circular(20),
+                    ),
+                  ),
+                  clipBehavior: Clip.antiAliasWithSaveLayer,
                   child: Image.asset(
-                    'images/header1.png',
-                    height: 180,
+                    'images/header.png',
+                    height: 120,
                     width: double.infinity,
                     fit: BoxFit.cover,
                   ),
                 ),
-                Container(
-                    margin: const EdgeInsets.only(left: 5, right: 5, top: 15),
+                Padding(
+                  padding : EdgeInsets.only(left: 20, top: 10),
+                  child:IconButton(
+                    icon: Icon(Icons.arrow_back, size : 35, color: Colors.white),
+                    onPressed: (){
+                      Navigator.pop(context);
+                    },
+                  ),
+                ),
+                Align(
                     alignment: Alignment.center,
-                    child: Text(
-                      'Sistem Peringatan Dini Bencana Tanah Longsor Kabupaten Bojonegoro',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 20.0),
-                    )),
+                    child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          const SizedBox(height: 60,),
+                          Text('Bencana Kekeringan',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 20,
+                                  color: Colors.white,
+                                  fontFamily: 'Open Sans'))
+                        ])
+                ),
               ],
             ),
             Card(
-              margin: const EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 0.0),
-              color: Color(0xfff8c291),
+              margin: const EdgeInsets.all(20),
+              color: Color(0xffeab543),
               clipBehavior: Clip.antiAlias,
-              elevation: 20,
+              elevation: 10,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.only(
                   topRight: Radius.circular(40),
                   topLeft: Radius.circular(40),
+                  bottomRight: Radius.circular(40),
+                  bottomLeft: Radius.circular(40),
                 ),
               ),
               child:
@@ -66,7 +94,7 @@ class HomePage extends StatelessWidget {
                           children: [
                           GestureDetector(
                           onTap: () {
-                            Route route = MaterialPageRoute(builder: (context) => PetaLokasiLongsor());
+                            Route route = MaterialPageRoute(builder: (context) => PetaLokasiKekeringan());
                             Navigator.push(context, route);
                           },
                           child :
@@ -88,7 +116,7 @@ class HomePage extends StatelessWidget {
                                           width: 70.0,
                                           height: 70.0,
                                         ),
-                                        Text('Lokasi Longsor',
+                                        Text('Lokasi Kekeringan',
                                             textAlign: TextAlign.center,
                                             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13, color: Colors.black, fontFamily: 'Open Sans'))
                                       ],
@@ -99,7 +127,7 @@ class HomePage extends StatelessWidget {
                           ),
                             GestureDetector(
                                 onTap: () {
-                                  Route route = MaterialPageRoute(builder: (context) => PetaRawanLongsor());
+                                  Route route = MaterialPageRoute(builder: (context) => PetaRawanKekeringan());
                                   Navigator.push(context, route);
                                 },
                                 child :
@@ -121,7 +149,7 @@ class HomePage extends StatelessWidget {
                                                     width: 70.0,
                                                     height: 70.0,
                                                   ),
-                                                  Text('Rawan Longsor',
+                                                  Text('Rawan Kekeringan',
                                                       textAlign: TextAlign.center,
                                                       style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13, color: Colors.black, fontFamily: 'Open Sans'))
                                                 ],
@@ -141,7 +169,7 @@ class HomePage extends StatelessWidget {
                           children: [
                           GestureDetector(
                             onTap: () {
-                              Route route = MaterialPageRoute(builder: (context) => PetaRiwayatLongsor());
+                              Route route = MaterialPageRoute(builder: (context) => PetaRiwayatKekeringan());
                               Navigator.push(context, route);
                             },
                             child :
@@ -163,7 +191,7 @@ class HomePage extends StatelessWidget {
                                             width: 70.0,
                                             height: 70.0,
                                           ),
-                                          Text('Riwayat Longsor',
+                                          Text('Riwayat Kekeringan',
                                               textAlign: TextAlign.center,
                                               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13, color: Colors.black, fontFamily: 'Open Sans'))
                                         ],
@@ -196,7 +224,7 @@ class HomePage extends StatelessWidget {
                                           width: 70.0,
                                           height: 70.0,
                                         ),
-                                        Text('SOP Longsor',
+                                        Text('SOP Kekeringan',
                                             textAlign: TextAlign.center,
                                             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13, color: Colors.black, fontFamily: 'Open Sans'))
                                       ],
@@ -213,6 +241,11 @@ class HomePage extends StatelessWidget {
                       child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
+                          GestureDetector(
+                          onTap: () {
+                            launchURL();
+                          },
+                        child:
                             Card(
                               elevation: 5,
                               color: Colors.white,
@@ -238,7 +271,8 @@ class HomePage extends StatelessWidget {
                                     )
                                 ),
                               ),
-                            ),
+                            )
+                          ),
                           GestureDetector(
                           onTap: () {
                             Route route = MaterialPageRoute(builder: (context) => About());

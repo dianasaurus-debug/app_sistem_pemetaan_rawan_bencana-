@@ -3,59 +3,51 @@ import 'dart:io';
 import 'package:http/http.dart' as http;
 import 'package:json_annotation/json_annotation.dart';
 
-part 'locations.g.dart';
+part 'lokasi_rawan.g.dart';
 
 @JsonSerializable()
-class RiwayatBencana {
-  RiwayatBencana({
+class BencanaRawan {
+  BencanaRawan({
     required this.desa,
     required this.id,
     required this.kecamatan,
     required this.latitude,
     required this.longitude,
-    required this.kerusakan,
-    required this.kerugian,
-    required this.status_perbaikan,
-    required this.bulan,
-    required this.tahun,
-
+    required this.status,
   });
 
-  factory RiwayatBencana.fromJson(Map<String, dynamic> json) => _$RiwayatBencanaFromJson(json);
-  Map<String, dynamic> toJson() => _$RiwayatBencanaToJson(this);
+  factory BencanaRawan.fromJson(Map<String, dynamic> json) => _$BencanaRawanFromJson(json);
+  Map<String, dynamic> toJson() => _$BencanaRawanToJson(this);
 
   final String desa;
   final int id;
   final String kecamatan;
   final double latitude;
   final double longitude;
-  final String kerusakan;
-  final String kerugian;
-  final String status_perbaikan;
-  final String bulan;
-  final String tahun;
+  final int status;
 }
 
 @JsonSerializable()
 class Locations {
   Locations({
-    required this.riwayat_bencana,
+    required this.bencana_rawan,
   });
 
   factory Locations.fromJson(Map<String, dynamic> json) =>
       _$LocationsFromJson(json);
   Map<String, dynamic> toJson() => _$LocationsToJson(this);
 
-  final List<RiwayatBencana> riwayat_bencana;
+  final List<BencanaRawan> bencana_rawan;
 
 }
 
 Future<Locations> getGoogleOffices(jenisbencana) async {
-  const googleLocationsURL = 'http://192.168.43.204:8000/api/riwayat-bencana/';
+  const googleLocationsURL = 'http://192.168.43.204:8000/api/lokasi-rawan/';
 
   // Retrieve the locations of Google offices
   final response = await http.get(Uri.parse(googleLocationsURL+jenisbencana));
   if (response.statusCode == 200) {
+    print(json.decode(response.body));
     return Locations.fromJson(json.decode(response.body));
   } else {
     throw HttpException(

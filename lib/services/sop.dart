@@ -35,3 +35,35 @@ Future<List<dynamic>> fetchSopLongsorPasca() async {
   print(json.decode(result.body)['pasca_bencana']);
   return json.decode(result.body)['pasca_bencana'];
 }
+//sop_kekeringan
+Future<List<dynamic>> fetchSopKekeringanPra() async {
+  var result = await http.get(Uri.parse(baseURL+'kekeringan'));
+  print(json.decode(result.body)['pra_bencana']);
+  return json.decode(result.body)['pra_bencana'];
+}
+Future<List<dynamic>> fetchSopKekeringanSaat() async {
+  var result = await http.get(Uri.parse(baseURL+'kekeringan'));
+  print(json.decode(result.body)['saat_bencana']);
+  return json.decode(result.body)['saat_bencana'];
+}
+Future<List<dynamic>> fetchSopKekeringanPasca() async {
+  var result = await http.get(Uri.parse(baseURL+'kekeringan'));
+  print(json.decode(result.body)['pasca_bencana']);
+  return json.decode(result.body)['pasca_bencana'];
+}
+//sop_puting-beliung
+Future<List<dynamic>> fetchSopPutingBeliungPra() async {
+  var result = await http.get(Uri.parse(baseURL+'puting-beliung'));
+  print(json.decode(result.body)['pra_bencana']);
+  return json.decode(result.body)['pra_bencana'];
+}
+Future<List<dynamic>> fetchSopPutingBeliungSaat() async {
+  var result = await http.get(Uri.parse(baseURL+'puting-beliung'));
+  print(json.decode(result.body)['saat_bencana']);
+  return json.decode(result.body)['saat_bencana'];
+}
+Future<List<dynamic>> fetchSopPutingBeliungPasca() async {
+  var result = await http.get(Uri.parse(baseURL+'puting-beliung'));
+  print(json.decode(result.body)['pasca_bencana']);
+  return json.decode(result.body)['pasca_bencana'];
+}

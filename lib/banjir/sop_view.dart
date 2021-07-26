@@ -17,9 +17,9 @@ class _SOPState extends State<SOP> {
   @override
   void initState() {
     super.initState();
-    futureSopPra = fetchSopLongsorPra();
-    futureSopSaat = fetchSopLongsorSaat();
-    futureSopPasca = fetchSopLongsorPasca();
+    futureSopPra = fetchSopBanjirPra();
+    futureSopSaat = fetchSopBanjirSaat();
+    futureSopPasca = fetchSopBanjirPasca();
   }
 
   @override
@@ -29,14 +29,14 @@ class _SOPState extends State<SOP> {
       child: Scaffold(
         appBar: AppBar(
           centerTitle: true,
-          title: Text('SOP',
+          title: Text('SOP Banjir',
               textAlign: TextAlign.center,
               style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 20,
                   color: Colors.white,
                   fontFamily: 'Open Sans')),
-          backgroundColor: Color(0xfff8c291),
+          backgroundColor: Color(0xffeaB543),
           bottom: TabBar(
             indicatorColor: Colors.white,
             indicatorSize: TabBarIndicatorSize.label,
@@ -95,7 +95,7 @@ class _SOPState extends State<SOP> {
                                     child: ListTile(
                                       contentPadding: EdgeInsets.all(0),
                                       leading: CircleAvatar(
-                                        backgroundColor: Color(0xfff8c291),
+                                        backgroundColor: Color(0xffeaB543),
                                         radius: 50,
                                         child: Text(
                                             (index+1).toString(), // ambil karakter pertama text
@@ -147,7 +147,7 @@ class _SOPState extends State<SOP> {
                                     child: ListTile(
                                       contentPadding: EdgeInsets.all(0),
                                       leading: CircleAvatar(
-                                        backgroundColor: Color(0xfff8c291),
+                                        backgroundColor: Color(0xffeaB543),
                                         radius: 50,
                                         child: Text(
                                             (index+1).toString(), // ambil karakter pertama text
@@ -199,7 +199,7 @@ class _SOPState extends State<SOP> {
                                     child: ListTile(
                                       contentPadding: EdgeInsets.all(0),
                                       leading: CircleAvatar(
-                                        backgroundColor: Color(0xfff8c291),
+                                        backgroundColor: Color(0xffeaB543),
                                         radius: 50,
                                         child: Text(
                                             (index+1).toString(), // ambil karakter pertama text
