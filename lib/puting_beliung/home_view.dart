@@ -2,6 +2,7 @@ import 'package:ewarn_app/about.dart';
 import 'package:ewarn_app/puting_beliung/peta_lokasi_puting_beliung.dart';
 import 'package:ewarn_app/puting_beliung/peta_rawan_puting_beliung.dart';
 import 'package:ewarn_app/puting_beliung/peta_riwayat_puting_beliung.dart';
+import 'package:ewarn_app/puting_beliung/rawan_putbel_baru.dart';
 
 import 'package:ewarn_app/puting_beliung/sop_view.dart';
 import 'package:flutter/cupertino.dart';
@@ -128,7 +129,7 @@ class HomePagePutingBeliung extends StatelessWidget {
                           ),
                             GestureDetector(
                                 onTap: () {
-                                  Route route = MaterialPageRoute(builder: (context) => PetaRawanPutingBeliung());
+                                  Route route = MaterialPageRoute(builder: (context) => PetaRawanPutingBeliungNew());
                                   Navigator.push(context, route);
                                 },
                                 child :

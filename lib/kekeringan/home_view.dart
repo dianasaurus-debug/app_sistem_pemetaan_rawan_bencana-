@@ -2,6 +2,7 @@ import 'package:ewarn_app/about.dart';
 import 'package:ewarn_app/kekeringan/peta_lokasi_kekeringan.dart';
 import 'package:ewarn_app/kekeringan/peta_rawan_kekeringan.dart';
 import 'package:ewarn_app/kekeringan/peta_riwayat_kekeringan.dart';
+import 'package:ewarn_app/kekeringan/rawan_kekeringan_baru.dart';
 
 import 'package:ewarn_app/kekeringan/sop_view.dart';
 import 'package:flutter/cupertino.dart';
@@ -127,7 +128,7 @@ class HomePageKekeringan extends StatelessWidget {
                           ),
                             GestureDetector(
                                 onTap: () {
-                                  Route route = MaterialPageRoute(builder: (context) => PetaRawanKekeringan());
+                                  Route route = MaterialPageRoute(builder: (context) => PetaRawanKekeringanNew());
                                   Navigator.push(context, route);
                                 },
                                 child :

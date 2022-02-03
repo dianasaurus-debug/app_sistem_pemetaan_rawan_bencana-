@@ -7,6 +7,7 @@ import 'package:ewarn_app/longsor/peta_rawan_longsor.dart';
 import 'package:ewarn_app/longsor/peta_riwayat_longsor.dart';
 
 import 'package:ewarn_app/longsor/sop_view.dart';
+import 'package:ewarn_app/peta_desa.dart';
 import 'package:ewarn_app/puting_beliung/home_view.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -166,7 +167,6 @@ class IndexPage extends StatelessWidget {
                                   ))
                             ]),
                       ),
-
                       Container(
                         margin: const EdgeInsets.only(bottom: 20),
                         child: Row(
@@ -249,6 +249,52 @@ class IndexPage extends StatelessWidget {
                                   ))
                             ]),
                       ),
+                      Container(
+                        margin: const EdgeInsets.only(bottom: 20),
+                        child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              GestureDetector(
+                                  onTap: () {
+                                    Route route = MaterialPageRoute(
+                                        builder: (context) =>
+                                            PetaDesa());
+                                    Navigator.push(context, route);
+                                  },
+                                  child: Card(
+                                    elevation: 5,
+                                    color: Colors.white,
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(20),
+                                    ),
+                                    child: SizedBox(
+                                      width: 130,
+                                      height: 120,
+                                      child: Center(
+                                          child: Column(
+                                            mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                            children: [
+                                              Image.asset(
+                                                "images/loc1.png",
+                                                width: 90.0,
+                                                height: 90.0,
+                                                fit: BoxFit.cover,
+                                              ),
+                                              Text('Peta Desa',
+                                                  textAlign: TextAlign.center,
+                                                  style: TextStyle(
+                                                      fontWeight: FontWeight.bold,
+                                                      fontSize: 15,
+                                                      color: Colors.black,
+                                                      fontFamily: 'Open Sans'))
+                                            ],
+                                          )),
+                                    ),
+                                  )),
+                            ]),
+                      ),
+
                     ],
                   )),
           ],

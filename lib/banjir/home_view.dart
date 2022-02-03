@@ -2,6 +2,7 @@ import 'package:ewarn_app/about.dart';
 import 'package:ewarn_app/banjir/peta_lokasi_banjir.dart';
 import 'package:ewarn_app/banjir/peta_rawan_banjir.dart';
 import 'package:ewarn_app/banjir/peta_riwayat_banjir.dart';
+import 'package:ewarn_app/banjir/rawan_banjir_baru.dart';
 
 import 'package:ewarn_app/banjir/sop_view.dart';
 import 'package:flutter/cupertino.dart';
@@ -144,7 +145,7 @@ class HomePageBanjir extends StatelessWidget {
                                           onTap: () {
                                             Route route = MaterialPageRoute(
                                                 builder: (context) =>
-                                                    PetaRawanBanjir());
+                                                    PetaRawanBanjirNew());
                                             Navigator.push(context, route);
                                           },
                                           child:

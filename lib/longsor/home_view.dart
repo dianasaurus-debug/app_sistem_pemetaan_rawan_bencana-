@@ -7,6 +7,7 @@ import 'package:ewarn_app/longsor/sop_view.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../coba_peta.dart';
 import '../navigate_url.dart';
 class HomePage extends StatelessWidget {
   Widget build(BuildContext context){
@@ -128,7 +129,7 @@ class HomePage extends StatelessWidget {
                           ),
                             GestureDetector(
                                 onTap: () {
-                                  Route route = MaterialPageRoute(builder: (context) => PetaRawanLongsor());
+                                  Route route = MaterialPageRoute(builder: (context) => PetaRawanCoba());
                                   Navigator.push(context, route);
                                 },
                                 child :

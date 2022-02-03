@@ -120,6 +120,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.3.1"
+  clippy_flutter:
+    dependency: "direct main"
+    description:
+      name: clippy_flutter
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.1.1"
   clock:
     dependency: transitive
     description:
@@ -162,6 +169,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.3"
+  custom_info_window:
+    dependency: "direct main"
+    description:
+      name: custom_info_window
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.1"
   dart_style:
     dependency: transitive
     description:
@@ -455,6 +469,20 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.1.0"
+  syncfusion_flutter_core:
+    dependency: transitive
+    description:
+      name: syncfusion_flutter_core
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "19.2.49"
+  syncfusion_flutter_maps:
+    dependency: "direct main"
+    description:
+      name: syncfusion_flutter_maps
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "19.2.49-beta"
   term_glyph:
     dependency: transitive
     description:
